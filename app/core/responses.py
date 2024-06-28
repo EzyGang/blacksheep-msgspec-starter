@@ -3,7 +3,6 @@ from typing import Generic, TypeVar
 import msgspec.msgpack
 from blacksheep import Content, Response
 from blacksheep.headers import HeaderType
-from msgspec import Struct
 
 
 T = TypeVar('T')
@@ -23,5 +22,5 @@ class MsgPackResponse(Generic[T], Response):
             content=Content(
                 content_type=b'application/msgpack',
                 data=encoder.encode(data),
-            )
+            ),
         )

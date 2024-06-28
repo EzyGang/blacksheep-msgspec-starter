@@ -1,8 +1,9 @@
 from blacksheep import Router
 
 from app.apps.users.dtos import HelloWorld
-from app.binders import FromMsgPack
 from app.core.responses import MsgPackResponse
+from app.lib.binders import FromMsgPack
+
 
 users_router = Router()
 _prefix = '/api/v1/users'

@@ -1,9 +1,9 @@
 from blacksheep import Application
 
 from app.apps.routes import router
-from app.auth import configure_authentication
-from app.errors import configure_error_handlers
-from app.settings import Settings, load_settings
+from app.core.auth import configure_authentication
+from app.core.errors import configure_error_handlers
+from app.core.settings import Settings, load_settings
 
 
 def configure_application(
