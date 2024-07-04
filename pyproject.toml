@@ -4,7 +4,7 @@ name = "blacksheep-msgpack-starter"
 [tool.poetry]
 name = "blacksheep-msgspeck-starter"
 version = "0.1.0"
-package-mode = true
+package-mode = false
 description = ""
 authors = ["Galtozzy <galtozzy+git@gmail.com>"]
 readme = "README.md"

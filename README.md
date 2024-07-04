@@ -1,6 +1,6 @@
 # Blacksheep with msgspec starter
 
-This repository is to be used as a starter for Blacksheep based Python applications.
+This repository is to be used as a starter for Blacksheep-based Python applications.
 
 ## Features
 
@@ -12,7 +12,7 @@ This repository is to be used as a starter for Blacksheep based Python applicati
 
 - [Python3.12+](https://www.python.org/)
 - [Poetry](https://python-poetry.org/) for project management
-- [Docker](https://docs.docker.com/) for image builds
+- [Docker](https://docs.docker.com/) for image builds (use `--target runtime-image`)
 
 
 ## Project Structure
@@ -23,11 +23,11 @@ This repository is to be used as a starter for Blacksheep based Python applicati
   │   ├── apps                # Contains python subpackages for each registered app
   │       ├── `app_name`
   │       │   ├── api         # Contains API endpoints declaration
-  │       │   └── dtos        # Contains DTO declarations
+  │       │   └── dtos        # Contains DTOs/Schemas declarations
   │       └── routes.py       # Registers all routers from all applications
   │   ├── core                # Configs and settings, logging, etc
   │   └── lib                 # Contains reusable base/abstract classes, helpers, etc
-  ├── docker                  # Contains docker related files
+  ├── docker                  # Contains docker-related files
   ├── tests                   # Tests
   └── ...
 ```
