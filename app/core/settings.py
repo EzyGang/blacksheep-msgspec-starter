@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     # export app_app='{"show_error_details": True}'
     app: App = App()
 
-    model_config = SettingsConfigDict(env_prefix='APP_')
+    model_config = SettingsConfigDict()
 
 
 @lru_cache

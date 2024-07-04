@@ -2,7 +2,6 @@ from typing import Generic, TypeVar
 
 import msgspec.msgpack
 from blacksheep import Content, Response
-from blacksheep.headers import HeaderType
 
 
 T = TypeVar('T')
@@ -13,7 +12,7 @@ class MsgPackResponse(Generic[T], Response):
     def __init__(
         self,
         status: int = 200,
-        headers: list[HeaderType] | None = None,
+        headers: list[tuple[bytes, bytes]] | None = None,
         data: T | None = None,
     ) -> None:
         super().__init__(
