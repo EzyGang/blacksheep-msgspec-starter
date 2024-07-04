@@ -18,8 +18,8 @@ class EnvironSettings(BaseSettings):
     PORT: int = Field(default=8000)
     LOG_LEVEL: str = Field(default='info')
 
-    ACCESS_LOG: str = Field(default='')
-    ERROR_LOG: str = Field(default='')
+    ACCESS_LOG: str = Field(default='-')
+    ERROR_LOG: str = Field(default='-')
 
     GRACEFUL_TIMEOUT: int = Field(default=60, ge=0)
     WORKER_CONNECTIONS: int = Field(default=10000, ge=0)
