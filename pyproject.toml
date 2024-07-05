@@ -132,7 +132,7 @@ addopts = [
     '--allow-unix-socket',
     '--allow-hosts=127.0.0.1,127.0.1.1,::1',
     '--tb=short',
-    '--cov=py_cachify/',
+    '--cov=app/',
     '--cov-branch',
     '--cov-report=term-missing:skip-covered',
     '--cov-report=xml',
