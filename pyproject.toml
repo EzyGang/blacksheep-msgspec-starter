@@ -22,7 +22,7 @@ gunicorn = "^23.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
-ipython = "^8.27.0"
+ipython = "^8.29.0"
 rich = "^13.8.1"
 pytest = "^8.3.3"
 pytest-mock = "^3.14.0"
