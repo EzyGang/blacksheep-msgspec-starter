@@ -1,4 +1,4 @@
-FROM python:3.12-alpine as compile-image
+FROM python:3.12-alpine AS compile-image
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
@@ -24,7 +24,7 @@ RUN pip uninstall poetry -y
 RUN apk del gcc python3-dev libc-dev
 
 
-FROM python:3.12-alpine as runtime-image
+FROM python:3.12-alpine AS runtime-image
 
 COPY --from=compile-image /usr/local /usr/local
 
