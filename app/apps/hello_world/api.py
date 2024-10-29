@@ -1,14 +1,14 @@
 from blacksheep import Router
 
-from app.apps.users.dtos import HelloWorld
-from app.core.responses import MsgPackResponse
+from app.apps.hello_world.dtos import HelloWorld
 from app.lib.binders import FromMsgPack
+from app.lib.responses import MsgPackResponse
 
 
-users_router = Router()
+hello_world_router = Router()
 _prefix = '/api/v1/users'
 
 
-@users_router.post(_prefix + '/hello-world')
+@hello_world_router.post(_prefix + '/hello-world')
 async def hello_world(data: FromMsgPack[HelloWorld]) -> MsgPackResponse[HelloWorld]:
     return MsgPackResponse(data=data.value)

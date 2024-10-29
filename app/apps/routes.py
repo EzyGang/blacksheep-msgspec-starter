@@ -1,8 +1,8 @@
 from blacksheep import Router
 
-from app.apps.users.api import users_router
+from app.apps.hello_world.api import hello_world_router
 
 
 router = Router(
-    sub_routers=[users_router],
+    sub_routers=[hello_world_router],
 )
