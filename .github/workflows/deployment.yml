@@ -1,0 +1,59 @@
+name: Deployment
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag'
+        required: true
+
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  build:
+    name: Build & Upload Web Application
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build & Push Image
+        env:
+          DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY || 'YOUR_DOCKER_REGISTRY' }}
+          # DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          # DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          IMAGE_NAME: ${{ vars.IMAGE_NAME || 'blacksheep-docker' }}
+          TAG: ${{ github.event.inputs.tag }}
+        run: |
+          tag_fin=$TAG
+          lock_hash=$(shasum -a 256 poetry.lock)
+          # docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} ${DOCKER_REGISTRY}
+
+          # if !(docker manifest inspect $DOCKER_REGISTRY/$IMAGE_NAME:cache-${lock_hash::8})
+          # then
+          #   docker buildx build --push --file docker/Dockerfile \
+          #     --build-arg BUILDKIT_INLINE_CACHE=1 \
+          #     --tag $DOCKER_REGISTRY/$IMAGE_NAME:cache-${lock_hash::8} \
+          #     --target compile-image \
+          #     .
+          # elif !(docker manifest inspect $DOCKER_REGISTRY/$IMAGE_NAME:${tag_fin})
+          #   docker pull $DOCKER_REGISTRY/$IMAGE_NAME:cache-${lock_hash::8}
+          # fi
+
+
+          # if !(docker manifest inspect $DOCKER_REGISTRY/$IMAGE_NAME:${tag_fin})
+          # then
+          # docker buildx build --push --file docker/Dockerfile \
+          docker buildx build --file docker/Dockerfile \
+            --build-arg BUILDKIT_INLINE_CACHE=1 \
+            --tag $DOCKER_REGISTRY/$IMAGE_NAME:${tag_fin} \
+            --cache-from $DOCKER_REGISTRY/$IMAGE_NAME:cache-${lock_hash::8} \
+            --build-arg RELEASE_VERSION="$(poetry version -s)" \
+            --target runtime-image \
+            .
+          # fi

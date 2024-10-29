@@ -15,6 +15,11 @@ This repository is to be used as a starter for Blacksheep-based Python applicati
 - [Docker](https://docs.docker.com/) for image builds (use `--target runtime-image`)
 
 
+## Builds
+
+Please see `deployment.yml` and adjust according to your needs, i.e. set secrets and variables inside the repo settings
+as well as uncomment the necessary lines or remove them.
+
 ## Project Structure
 
 ```
