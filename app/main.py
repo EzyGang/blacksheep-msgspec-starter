@@ -9,7 +9,7 @@ from app.core.settings import Settings, load_settings
 def configure_application(
     settings: Settings,
 ) -> Application:
-    _app = Application(services=None, show_error_details=settings.app.show_error_details, router=router)
+    _app = Application(services=None, show_error_details=settings.is_debug, router=router)
 
     configure_error_handlers(_app)
     configure_authentication(_app, settings)

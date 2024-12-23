@@ -11,7 +11,7 @@ This repository is to be used as a starter for Blacksheep-based Python applicati
 ## Prerequisites
 
 - [Python3.12+](https://www.python.org/)
-- [Poetry](https://python-poetry.org/) for project management
+- [uv](https://docs.astral.sh/uv/) for project management
 - [Docker](https://docs.docker.com/) for image builds (use `--target runtime-image`)
 
 
@@ -39,11 +39,11 @@ as well as uncomment the necessary lines or remove them.
 
 ## Useful commands
 
--  `poetry install`- creates virtualenv and installs project dependencies
--  `poetry lock`- updates `poetry.lock`
--  `poetry update`- updates packages locally and updates `poetry.lock`
+-  `uv sync`- creates virtualenv and installs project dependencies
+-  `uv lock`- updates `uv.lock`
+-  `uv sync --upgrade`- updates packages locally and updates `uv.lock`
 
-## Project tasks list (uses taskipy to execute, example: `poetry run task mypy-lint`)
+## Project tasks list (uses taskipy to execute, example: `uv run task mypy-lint`)
 -  `ruff` - runs ruff on a project files
 -  `tests` - runs tests
 -  `mypy-lint` - run mypy lint
